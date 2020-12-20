@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cart = ({item, removeFromCart, deleteCart,addToCart,removeOneItem}) => {
+const Cart = ({item, removeFromCart, deleteCart,addToCart,removeOneItem,increaseQuantity}) => {
 
     const getTotalValue = () => {
         return item.reduce((sum, {price,quantity}) => sum + price*quantity, 0).toFixed(2);
@@ -33,7 +33,7 @@ const Cart = ({item, removeFromCart, deleteCart,addToCart,removeOneItem}) => {
                         <div className="cartButton">
                             <button className="btn btn-danger" onClick={()=>removeFromCart(book)}>-</button>
                             <p>{book.quantity} vnt.</p>
-                            <button className="btn btn-success" onClick={()=>addToCart(book)}>+</button>
+                            <button className="btn btn-success" onClick={()=>increaseQuantity(book)}>+</button>
                         </div>
                         </td>
                         <td>

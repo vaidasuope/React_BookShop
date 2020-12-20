@@ -16,20 +16,33 @@ const Booklist= () => {
             (product) => book.title === product.title
         );
         console.log(book.title)
-        if (itemInCart) {
+
+        if (itemInCart && itemInCart.quantity < book.remain) {
             itemInCart.quantity++;
-            if (itemInCart.quantity>book.remain) {
-                alert(`Knygų likutis:${book.remain}`);
-            }
-        } else {
+
+        } else if (itemInCart === undefined) {
             itemInCart = {
                 ...book,
-                quantity:1,
+                quantity: 1,
             }
             newCart.push(itemInCart);
+        } else {
+            alert(`Knygų likutis:${book.remain}`);
         }
         setItem(newCart);//{...data} padaropm nauja objekta, kad galetume istrinti po viena knyga, nes kitu atveju istrina visas tos rusies knygas
-        // alert(`"${book.title}" jau krepšelyje!`)
+    };
+
+    const increaseQuantity = (book) => {
+        let newCart = [...item];
+        let itemInCart = newCart.find(
+            (product) => book.title === product.title
+        );
+        if (itemInCart && itemInCart.quantity<book.remain) {
+            itemInCart.quantity++;
+        }else{
+            alert(`Knygų likutis:${book.remain}`);
+        }
+        setItem(newCart);
     };
 
     const removeFromCart = (book) => {
@@ -69,7 +82,7 @@ const Booklist= () => {
                 {page === PAGE_CART && <p className="back mt-3 btn btn-warning" onClick={()=>navigateTo(PAGE_BOOKS)}>Grįžti į pagrindinį</p>}
             </header>
             {page === PAGE_BOOKS && <Book addToCart={addToCart}/>}
-            {page === PAGE_CART && <Cart item={item} removeFromCart={removeFromCart} deleteCart={deleteCart} addToCart={addToCart} removeOneItem={removeOneItem}/>}
+            {page === PAGE_CART && <Cart item={item} removeFromCart={removeFromCart} deleteCart={deleteCart} addToCart={addToCart} removeOneItem={removeOneItem} increaseQuantity={increaseQuantity}/>}
         </div>
     );
 };
