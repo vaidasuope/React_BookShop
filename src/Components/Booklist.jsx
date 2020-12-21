@@ -19,12 +19,14 @@ const Booklist= () => {
 
         if (itemInCart && itemInCart.quantity < book.remain) {
             itemInCart.quantity++;
+            // alert("Prekė įdėta į krepšelį.");
 
         } else if (itemInCart === undefined) {
             itemInCart = {
                 ...book,
                 quantity: 1,
             }
+            // alert("Prekė įdėta į krepšelį.");
             newCart.push(itemInCart);
         } else {
             alert(`Knygų likutis:${book.remain}`);

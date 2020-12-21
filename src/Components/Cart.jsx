@@ -52,7 +52,7 @@ const Cart = ({item, removeFromCart, deleteCart,addToCart,removeOneItem,increase
                     <th><p>Viso: {getTotalValue()} €</p></th>
                 </tr>
             </table>
-            {item.length>0 && <button className="btn btn-danger" onClick={deleteCart}>Išvalyti krepšelį</button>}
+            {item.length>0 && <button className="btn btn-danger button2" onClick={deleteCart}>Išvalyti krepšelį</button>}
         </div>
     );
 };

@@ -14,7 +14,7 @@ const Book = ({addToCart}) => {
                     <img src={book.image} alt={book.title}/>
                     <h6>Kaina: {book.price} €</h6>
                     {/*<Button book={book}/>*/}
-                    <button className="btn btn-success" onClick={()=>addToCart(book)}>Į krepšelį</button>
+                    <button className="btn btn-success button2" onClick={()=>addToCart(book)}>Į krepšelį</button>
                 </div>
             ))}
         </div>

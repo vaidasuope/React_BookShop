@@ -89,7 +89,7 @@ span {
     height: 100%;
     padding-bottom: 30px;
 }
-h1, p, h6 {
+h1, p, h6, .button2 {
     font-family: "Courier New";
 }
 .table {
