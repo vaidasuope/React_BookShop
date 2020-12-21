@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import Book from "./Book";
 import Cart from "./Cart";
 
@@ -7,7 +7,10 @@ const PAGE_CART = 'cart';
 
 const Booklist= () => {
 
-    const [item, setItem] = useState([]);
+    const [item, setItem] = useState( () => {
+        const localData = localStorage.getItem("item");
+        return localData ? JSON.parse(localData):[];
+    });
     const [page, setPage] = useState('book');
 
     const addToCart = (book) => {
@@ -77,6 +80,10 @@ const Booklist= () => {
             (sum, {quantity}) => sum + quantity, 0);
     };
 
+    useEffect(() => {
+        localStorage.setItem("item",JSON.stringify(item))
+    },[item]);
+
     return (
         <div className="bookLayout">
             <header>
@@ -84,7 +91,7 @@ const Booklist= () => {
                 {page === PAGE_CART && <p className="back mt-3 btn btn-warning" onClick={()=>navigateTo(PAGE_BOOKS)}>Grįžti į pagrindinį</p>}
             </header>
             {page === PAGE_BOOKS && <Book addToCart={addToCart}/>}
-            {page === PAGE_CART && <Cart item={item} removeFromCart={removeFromCart} deleteCart={deleteCart} addToCart={addToCart} removeOneItem={removeOneItem} increaseQuantity={increaseQuantity}/>}
+            {page === PAGE_CART && <Cart item={item} setItem={setItem} removeFromCart={removeFromCart} deleteCart={deleteCart} addToCart={addToCart} removeOneItem={removeOneItem} increaseQuantity={increaseQuantity}/>}
         </div>
     );
 };
