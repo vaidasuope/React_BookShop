@@ -5,14 +5,13 @@ const Cart = ({item, setItem, removeFromCart, deleteCart,addToCart,removeOneItem
     const getTotalValue = () => {
         return item.reduce((sum, {price,quantity}) => sum + price*quantity, 0).toFixed(2);
     };
-
     const checkOut = () => {
         setItem([]);
+        alert("Ačiū, kad pirkote!")
     };
-
     return (
         <div className="booksCart">
-            <h1 className="mt-3">Pirkinų krepšelis</h1>
+            <h1 className="mt-3">Prekių krepšelis</h1>
             <table className="table">
                 <tbody>
                 {item.length>0 &&
@@ -59,9 +58,9 @@ const Cart = ({item, setItem, removeFromCart, deleteCart,addToCart,removeOneItem
                 </tr>
                 </tbody>
             </table>
+            {item.length===0 && <h6>Prekių krepšelis tuščias</h6>}
             {item.length>0 && <button className="btn btn-danger button2" onClick={deleteCart}>Išvalyti krepšelį</button>}
         </div>
     );
 };
-
 export default Cart;

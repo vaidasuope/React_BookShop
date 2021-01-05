@@ -2,7 +2,6 @@ import React from 'react';
 import data from "./Data";
 
 const Book = ({addToCart}) => {
-
     return (
     <div className="books">
         <h1 className="mt-3">Populiariausios knygos</h1>
@@ -20,5 +19,4 @@ const Book = ({addToCart}) => {
         </div>
     </div>
     )};
-
 export default Book;

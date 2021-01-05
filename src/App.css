@@ -99,4 +99,13 @@ h1, p, h6, .button2 {
 tr {
     text-align: center;
 }
+header {
+    background-color: beige;
+    margin: 15px -15px;
+
+}
+header > p {
+    margin-right: 15px;
+    margin-left: 15px;
+}
 

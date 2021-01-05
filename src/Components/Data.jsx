@@ -48,5 +48,4 @@ const data = [
         image:"https://thumb.knygos-static.lt/GY29W9BMnJTAvOlnPEPFIa_j1LA=/fit-in/320x430/images/books/2392036/1604579225_bevardes_mergaites_2d1s.jpg"
     }
 ]
-
 export default data;
